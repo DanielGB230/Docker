@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel GB - Desarrollador Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(-45deg, #1f1f1f, #eaebea, #1f1f1f, #eaebea);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #3B82F6;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-cursor.hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .tilt {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .tilt-inner {
+            transform: translateZ(20px);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .glow {
+            transition: all 0.3s ease;
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 15px #3B82F6;
+        }
+
+        .skill-progress {
+            transition: width 1s ease-in-out;
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            background-color: #131313;
+            background-image: url("");
+        }
+    </style>
+</head>
+
+<body class="font-sans leading-relaxed text-gray-300">
+    <div class="custom-cursor hidden md:block"></div>
+
+    <!-- Navegación -->
+    <nav id="navbar"
+        class="bg-black bg-opacity-50 backdrop-blur-md text-white py-4 fixed top-0 w-full z-10 transition-all duration-300">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="navbar-logo flex items-center">
+                <i class="fas fa-meteor text-2xl mr-2 text-blue-500 float"></i>
+                <span class="text-xl font-bold text-shadow">Daniel GB</span>
+            </div>
+            <ul class="navbar-links hidden md:flex items-center space-x-6">
+                <li><a href="#inicio" class="hover:text-blue-500 transition duration-200 glow">Inicio</a></li>
+                <li><a href="#portafolio" class="hover:text-blue-500 transition duration-200 glow">Portafolio</a></li>
+                <li><a href="#habilidades" class="hover:text-blue-500 transition duration-200 glow">Habilidades</a></li>
+                <li><a href="#mi-persona" class="hover:text-blue-500 transition duration-200 glow">Mi Persona</a></li>
+                <li><a href="#contacto" class="hover:text-blue-500 transition duration-200 glow">Contacto</a></li>
+                <li><a href="cv-danielgb.pdf" target="_blank"
+                        class="hover:text-blue-500 transition duration-200 glow">Ver mi CV</a></li>
+            </ul>
+            <div class="social-icons hidden md:flex items-center space-x-4">
+                <a href="https://www.facebook.com" target="_blank"
+                    class="hover:text-blue-500 transition duration-200 glow"><i
+                        class="fab fa-facebook-square text-lg"></i></a>
+                <a href="https://www.instagram.com" target="_blank"
+                    class="hover:text-blue-500 transition duration-200 glow"><i
+                        class="fab fa-instagram text-lg"></i></a>
+                <a href="https://github.com" target="_blank" class="hover:text-blue-500 transition duration-200 glow"><i
+                        class="fab fa-github text-lg"></i></a>
+                <a href="https://www.linkedin.com" target="_blank"
+                    class="hover:text-blue-500 transition duration-200 glow"><i class="fab fa-linkedin text-lg"></i></a>
+                <a href="https://www.twitter.com" target="_blank"
+                    class="hover:text-blue-500 transition duration-200 glow"><i
+                        class="fab fa-twitter-square text-lg"></i></a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden">
+        <div class="flex flex-col items-center justify-center h-full">
+            <a href="#inicio" class="text-white text-2xl my-4 glow">Inicio</a>
+            <a href="#portafolio" class="text-white text-2xl my-4 glow">Portafolio</a>
+            <a href="#habilidades" class="text-white text-2xl my-4 glow">Habilidades</a>
+            <a href="#mi-persona" class="text-white text-2xl my-4 glow">Mi Persona</a>
+            <a href="#contacto" class="text-white text-2xl my-4 glow">Contacto</a>
+            <a href="cv-danielgb.pdf" target="_blank" class="text-white text-2xl my-4 glow">Ver mi CV</a>
+        </div>
+    </div>
+
+    <!-- Hero Section con Parallax y Gradiente -->
+    <section id="inicio"
+        class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0 gradient-bg"></div>
+        <div class="absolute inset-0 z-0 opacity-30">
+            <img src="https://i.ibb.co/bzPfMqJ/5651343b2dcda1e5fc903bd1764650b6-transformed.jpg" alt="Background"
+                class="w-full h-full object-cover" id="parallax-bg">
+        </div>
+        <div class="relative z-10 bg-black bg-opacity-70 p-8 rounded-lg shadow-2xl transform transition-all duration-500 opacity-0"
+            id="hero-content">
+            <h1 class="text-5xl font-bold mb-6 text-shadow">Hola, soy Desarrollador Web Junior</h1>
+            <h2 class="text-2xl mb-8 text-shadow">¡Este es mi portafolio!</h2>
+            <a href="#portafolio"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105 inline-block glow">Ver
+                más</a>
+        </div>
+    </section>
+
+    <!-- Portafolio -->
+    <section id="portafolio" class="bg-gray-900 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white text-shadow">Portafolio</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div
+                    class="tilt bg-gray-800 rounded-lg shadow-xl transition-all duration-300 hover:-translate-y-2 opacity-0 transform portfolio-item">
+                    <div class="tilt-inner">
+                        <img src="https://i.ytimg.com/vi/Wjj8fluz6rk/maxresdefault.jpg" alt="Formulario Espacial"
+                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Proyecto en Angular</h3>
+                            <p class="text-gray-400">Desarrollo de aplicativo web.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="tilt bg-gray-800 rounded-lg shadow-xl transition-all duration-300 hover:-translate-y-2 opacity-0 transform portfolio-item">
+                    <div class="tilt-inner">
+                        <img src="https://www.techzine.eu/wp-content/uploads/2022/09/1768.sql_logo.jpg" alt="Pagina SNK"
+                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Proyecto de BD SQL Server</h3>
+                            <p class="text-gray-400">Desarrollo de base de datos en SQL Server.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="tilt bg-gray-800 rounded-lg shadow-xl transition-all duration-300 hover:-translate-y-2 opacity-0 transform portfolio-item">
+                    <div class="tilt-inner">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKa6FP89rKybb6GWI04Xqj5fd3A9jLyDeAdA&s"
+                            alt="Producto Ventas" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Proyecto en C#</h3>
+                            <p class="text-gray-400">Desarrollo de Backend para Aplicativo Web.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Habilidades -->
+    <section id="habilidades" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white text-shadow">Mis Habilidades</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="skill-item">
+                    <h3 class="text-xl font-bold mb-2 text-white">Angular</h3>
+                    <div class="bg-gray-700 h-4 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-4 rounded-full skill-progress glow" style="width: 0%;"
+                            data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3 class="text-xl font-bold mb-2 text-white">HTML/CSS</h3>
+                    <div class="bg-gray-700 h-4 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-4 rounded-full skill-progress glow" style="width: 0%;"
+                            data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3 class="text-xl font-bold mb-2 text-white">Tailwind</h3>
+                    <div class="bg-gray-700 h-4 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-4 rounded-full skill-progress glow" style="width: 0%;"
+                            data-width="80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3 class="text-xl font-bold mb-2 text-white">C#</h3>
+                    <div class="bg-gray-700 h-4 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-4 rounded-full skill-progress glow" style="width: 0%;"
+                            data-width="75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="mi-persona" class="bg-gray-900 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white text-shadow">Mi Persona</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0 opacity-0 transform about-image">
+                    <img src="https://i.ibb.co/5cs9zbm/Venice-AI-39o2-D1-X.png" alt="Daniel gb23"
+                        class="w-full max-w-md mx-auto rounded-lg shadow-2xl glow">
+                </div>
+                <div class="w-full md:w-1/2 opacity-0 transform about-text">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        ¡Hola! Soy Daniel, un profesional proactivo y organizado, con habilidades para trabajar en
+                        equipo
+                        y establecer relaciones efectivas. Me caracterizo por mi responsabilidad, actitud positiva y
+                        capacidad de adaptación a diversos ambientes laborales. Busco una oportunidad que me permita
+                        demostrar mis competencias, crecer profesionalmente y contribuir al éxito de la organización
+                        mediante mi dedicación.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class=" py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white text-shadow">Contacto</h2>
+            <div class="flex flex-col items-center space-y-6 opacity-0 transform contact-form">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-envelope text-blue-500 text-2xl glow"></i>
+                    <a href="mailto:i2310354@continental.edu.pe"
+                        class="text-lg text-gray-300 hover:text-blue-500 transition duration-200 glow">i2310354@continental.edu.pe</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-phone text-blue-500 text-2xl glow"></i>
+                    <a href="tel: +51 990 477 997"
+                        class="text-lg text-gray-300 hover:text-blue-500 transition duration-200 glow">+51 990 477 997</a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="https://www.facebook.com" target="_blank"
+                        class="text-gray-300 hover:text-blue-500 transition duration-200 glow"><i
+                            class="fab fa-facebook-square text-3xl"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"
+                        class="text-gray-300 hover:text-blue-500 transition duration-200 glow"><i
+                            class="fab fa-instagram text-3xl"></i></a>
+                    <a href="https://github.com" target="_blank"
+                        class="text-gray-300 hover:text-blue-500 transition duration-200 glow"><i
+                            class="fab fa-github text-3xl"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank"
+                        class="text-gray-300 hover:text-blue-500 transition duration-200 glow"><i
+                            class="fab fa-linkedin text-3xl"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"
+                        class="text-gray-300 hover:text-blue-500 transition duration-200 glow"><i
+                            class="fab fa-twitter-square text-3xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Hecho por Daniel GB. Todos los derechos son reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Volver Arriba -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-white text-white p-2 rounded-full  glow">
+        <svg class="h-8 w-8 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5" />
+            <polyline points="5 12 12 5 19 12" />
+        </svg>
+    </button>
+
+    <script>
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                navbar.style.boxShadow = '0 2px 4px rgba(0,0,0,.1)';
+                backToTopButton.style.opacity = '1';
+            } else {
+                navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                navbar.style.boxShadow = 'none';
+                backToTopButton.style.opacity = '0';
+            }
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const parallaxBg = document.getElementById('parallax-bg');
+            const scrollPosition = window.pageYOffset;
+            parallaxBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        });
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.portfolio-item, .about-image, .about-text, .contact-form, .skill-item');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                if (rect.top <= windowHeight * 0.75) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+
+            // Animate skill progress bars
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                if (rect.top <= windowHeight * 0.75) {
+                    bar.style.width = bar.getAttribute('data-width');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            document.getElementById('hero-content').style.opacity = '1';
+            document.getElementById('hero-content').style.transform = 'translateY(0)';
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Custom cursor
+        const cursor = document.querySelector('.custom-cursor');
+        const interactiveElements = document.querySelectorAll('a, button');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Tilt effect for portfolio items
+        const tiltElements = document.querySelectorAll('.tilt');
+
+        tiltElements.forEach(el => {
+            el.addEventListener('mousemove', tiltEffect);
+            el.addEventListener('mouseleave', resetTilt);
+        });
+
+        function tiltEffect(event) {
+            const { left, top, width, height } = this.getBoundingClientRect();
+            const x = (event.clientX - left) / width;
+            const y = (event.clientY - top) / height;
+            const tiltX = (y - 0.5) * 10;
+            const tiltY = (x - 0.5) * -10;
+            this.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        }
+
+        function resetTilt() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        }
+
+        // Back to top functionality
+        const backToTopButton = document.getElementById('back-to-top');
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>
